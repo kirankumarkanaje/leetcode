@@ -1,2 +1,10 @@
 # leetcode
 Only leetcode solutions
+Problem:
+Tag:
+Pattern: (two pointers / sliding window / BFS / DP / monotonic stack / etc.)
+Core idea in 1 sentence:
+Key invariant: (what always stays true)
+Common pitfall:
+Pseudocode (5 lines max):
+Complexity:
