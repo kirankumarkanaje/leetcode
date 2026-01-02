@@ -15,3 +15,29 @@ Why this complexity:
 Each loop step eliminates half the remaining search space (because the array is sorted, you can discard either the left half or the right half).
 Halving n repeatedly takes about log2(n) steps until the range becomes empty or you find the target → O(log n) time.
 You only store a few variables (l, r, mid) and don’t allocate extra arrays/recursion stack → O(1) space.
+
+Code:
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+
+        #optimized
+        l = 0
+        r = len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) // 2 #pitfall
+            if nums[mid] == target :
+                return mid
+            elif nums[mid] < target:
+                l = mid + 1 #pitfall
+            else:
+                r = mid - 1 #pitfall
+        return - 1
+
+        #brute force O(n)
+        '''for i in range(len(nums) - 1):
+            if nums[i] == target:
+                return i
+        
+        return -1
+        '''
