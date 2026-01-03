@@ -1,0 +1,19 @@
+**Problem:** Koko Eating Bananas
+
+**Pattern:** Binary Search on Answer (search minimum feasible rate)
+
+**Core idea in 1 sentence:** The total hours needed is monotonic with respect to `k` (bigger `k` ⇒ fewer/equal hours), so binary search the smallest `k` that finishes within `h`.
+
+**Key invariant:** If a rate `k` is feasible (hours ≤ h), then any `k' > k` is also feasible; if `k` is not feasible, any `k' < k` is not feasible.
+
+**Common pitfall:** Computing hours incorrectly—must use ceiling: `hours += ceil(pile / k)` (not floor), e.g. `(pile + k - 1) // k`.
+
+**Pseudocode (5 lines max):**
+
+1. `l=1, r=max(piles)`
+2. while `l<=r`: `k=(l+r)//2`; `hours=sum((p+k-1)//k for p in piles)`
+3. if `hours<=h`: `ans=k; r=k-1`
+4. else: `l=k+1`
+5. return `ans`
+
+**Complexity:** Time `O(n log M)` where `n=len(piles)`, `M=max(piles)`, Space `O(1)`
